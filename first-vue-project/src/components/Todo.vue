@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <button @click="get">test get</button>
     <!--<header class="header">todos</header>-->
     <div class="content">
             <span class="icon-down el-icon-arrow-down"
@@ -43,6 +44,7 @@
     </div>
 </template>
 <script>
+    import {Http} from 'vue-resource'
     export default {
       name:'Todo',
       data() {
@@ -67,6 +69,15 @@
         }
       },
       methods: {
+        get:function(){
+          Http.get('/api').then(
+            function(res){
+            console.log('successfully!!!!')
+            },
+            function(res){
+              console.log('error!!!!')
+            })
+        },
         saveList(){
           console.log(this.todoLists)
           window.localStorage.setItem("content", JSON.stringify(this.todoLists)) //使用localStorage以JSON格式存储数据
