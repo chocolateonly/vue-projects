@@ -14,7 +14,7 @@
                 @mouseover="list.isActive = true"
                 @mouseleave="list.isActive=false"
                 v-show="defaultShow || (whichShow?list.isChecked:!list.isChecked)">
-                <el-checkbox type="checkbox" class="checkBox" v-model="list.isChecked"  />
+                <el-checkbox type="checkbox" class="checkBox" v-model="list.isChecked"  @change="saveList"/>
                 <div class="content_todoList_main" @dblclick="toEdit(list)" v-show="!list.isEditing" :class="{deleted:list.isChecked}">
                     {{list.value}}
                 </div>
